@@ -1,0 +1,40 @@
+# Thai TTS Enhanced Requirements
+# This file contains additional requirements for the enhanced Thai TTS features
+
+# Core TTS dependencies (these should already be in the main requirements.txt)
+# torch>=1.7.0
+# numpy>=1.19.0
+# scipy>=1.5.0
+
+# CLI and API dependencies
+fastapi>=0.68.0
+uvicorn>=0.15.0
+pydantic>=1.8.0
+python-multipart>=0.0.5
+aiofiles>=0.7.0
+
+# Thai language processing
+pythainlp>=2.3.0
+swathai>=0.1.0
+thai-segmenter>=0.1.0
+
+# Audio processing
+librosa>=0.8.0
+soundfile>=0.10.0
+
+# Progress bars and UI
+tqdm>=4.62.0
+colorama>=0.4.4
+
+# Development and testing
+pytest>=6.2.0
+pytest-asyncio>=0.15.0
+httpx>=0.24.0  # For API testing
+
+# Optional: Enhanced features
+matplotlib>=3.3.0  # For visualizations
+jupyter>=1.0.0    # For notebooks
+ipywidgets>=7.6.0  # For interactive widgets
+
+# Performance optimization
+# torchaudio>=0.8.0  # Already in main requirements

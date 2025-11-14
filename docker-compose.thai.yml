@@ -1,0 +1,144 @@
+
+version: '3.8'
+
+services:
+  # Main TTS Service
+  thai-tts:
+    build: 
+      context: .
+      dockerfile: Dockerfile.thai-tts
+    container_name: thai-tts-dev
+    ports:
+      - "8000:8000"  # REST API
+      - "8001:8001"  # WebSocket
+      - "8080:8080"  # Web Dashboard
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./config:/app/config
+    environment:
+      - PYTHONPATH=/app
+      - CUDA_VISIBLE_DEVICES=0
+      - TTS_MODEL_PATH=/app/models
+      - THAI_DATASET_PATH=/app/data/thai
+      - CACHE_DIR=/app/cache
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Redis for Caching
+  redis:
+    image: redis:7-alpine
+    container_name: thai-tts-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+    command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru
+
+  # PostgreSQL for Metadata
+  postgres:
+    image: postgres:15-alpine
+    container_name: thai-tts-postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_DB=thai_tts_db
+      - POSTGRES_USER=thai_tts_user
+      - POSTGRES_PASSWORD=thai_tts_password
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+
+  # Monitoring - Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: thai-tts-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+
+  # Monitoring - Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: thai-tts-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=thai_tts_admin
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+
+  # Load Balancer - Nginx
+  nginx:
+    image: nginx:alpine
+    container_name: thai-tts-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - thai-tts
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+
+  # Jupyter Notebook for Development
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile.jupyter
+    container_name: thai-tts-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./models:/app/models
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=thai_tts_jupyter
+    networks:
+      - thai-tts-network
+    restart: unless-stopped
+
+volumes:
+  redis-data:
+  postgres-data:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  thai-tts-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
