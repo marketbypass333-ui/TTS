@@ -11,6 +11,7 @@ from .english.abbreviations import abbreviations_en
 from .english.number_norm import normalize_numbers as en_normalize_numbers
 from .english.time_norm import expand_time_english
 from .french.abbreviations import abbreviations_fr
+from .thai.cleaners import thai_cleaners, basic_thai_cleaners
 
 # Regular expression matching whitespace:
 _whitespace_re = re.compile(r"\s+")
@@ -153,6 +154,24 @@ def portuguese_cleaners(text):
 def chinese_mandarin_cleaners(text: str) -> str:
     """Basic pipeline for chinese"""
     text = replace_numbers_to_characters_in_text(text)
+    return text
+
+
+def thai_cleaners(text: str) -> str:
+    """Pipeline for Thai text, including number and abbreviation expansion."""
+    from .thai.numbers import normalize_numbers
+    from .thai.cleaners import thai_cleaners as thai_clean_func
+    text = thai_clean_func(text)
+    text = normalize_numbers(text)
+    text = collapse_whitespace(text)
+    return text
+
+
+def basic_thai_cleaners(text: str) -> str:
+    """Basic Thai cleaning without abbreviation expansion."""
+    from .thai.cleaners import basic_thai_cleaners as basic_thai_clean_func
+    text = basic_thai_clean_func(text)
+    text = collapse_whitespace(text)
     return text
 
 
