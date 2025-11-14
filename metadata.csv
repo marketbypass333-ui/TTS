@@ -1,0 +1,41 @@
+file_name,text,emotion_label,pitch,duration,energy
+audio/audio0001.wav,สวัสดีครับทุกคน ยินดีที่ได้พบกันอีกครั้ง,positive,medium,3.5,medium
+audio/audio0002.wav,เธอเคยเห็นนกบินสูงบนฟ้าสีครามไหม,neutral,medium,2.8,medium
+audio/audio0003.wav,ขอบคุณที่ติดตามและรับฟังนะครับ,positive,warm,2.5,medium
+audio/audio0004.wav,ฝันดีนะ ราตรีสวัสดิ์,positive,low,2.0,low
+audio/audio0005.wav,คุณเชื่อเรื่องพรหมลิขิตไหม?,neutral,medium,2.3,medium
+audio/audio0006.wav,มองขึ้นไปบนฟ้า วันนี้ท้องฟ้าสวยมากเลย,positive,high,3.0,high
+audio/audio0007.wav,อย่าลืมดื่มน้ำเยอะ ๆ ดูแลตัวเองด้วยนะ,positive,warm,3.2,medium
+audio/audio0008.wav,บางครั้งชีวิตก็ต้องมีอุปสรรคบ้างถึงจะสนุก,positive,medium,3.5,medium
+audio/audio0009.wav,นี่เป็นครั้งแรกที่ฉันได้ลองอะไรใหม่ ๆ,positive,high,2.8,high
+audio/audio0010.wav,เจอกันพรุ่งนี้นะ อย่าลืมมานะ!,positive,high,2.5,high
+audio/chat0001.wav,ว่าไงเพื่อน วันนี้เป็นยังไงบ้าง?,neutral,medium,2.7,medium
+audio/chat0002.wav,ทำไมเธอดูเศร้าจัง มีอะไรหรือเปล่า?,negative,low,2.9,low
+audio/chat0003.wav,ขอโทษนะ ฉันไม่ได้ตั้งใจจะทำให้เธอโกรธ,negative,low,3.0,low
+audio/chat0004.wav,เฮ้ย! นี่มันของโปรดฉันเลยนะ,positive,high,2.3,high
+audio/chat0005.wav,อืมม...ฉันต้องคิดดูก่อนนะ,neutral,low,2.5,low
+audio/motivation0001.wav,ล้มได้ แต่ต้องลุกให้ไว!,positive,high,2.0,high
+audio/motivation0002.wav,อย่าหยุดฝัน เพียงเพราะคนอื่นมองว่าเป็นไปไม่ได้,positive,medium,3.5,medium
+audio/motivation0003.wav,เหนื่อยก็พัก แต่ห้ามยอมแพ้เด็ดขาด,positive,medium,3.0,medium
+audio/motivation0004.wav,ทุกปัญหามีทางออกเสมอ แค่เราต้องหามันให้เจอ,positive,medium,3.2,medium
+audio/motivation0005.wav,วันนี้อาจจะแย่ แต่พรุ่งนี้อาจจะเป็นวันที่ดีที่สุดของคุณ,positive,warm,3.8,medium
+audio/question0001.wav,เธอเคยรู้สึกแบบนี้ไหม?,neutral,medium,2.2,medium
+audio/question0002.wav,อะไรคือสิ่งที่ทำให้เธอมีความสุขที่สุด?,neutral,medium,2.8,medium
+audio/question0003.wav,ทำไมเราถึงต้องกลัวความล้มเหลว?,neutral,low,2.7,low
+audio/question0004.wav,อยากไปเที่ยวที่ไหนมากที่สุดตอนนี้?,positive,high,2.5,high
+audio/question0005.wav,เธอเชื่อในปาฏิหาริย์ไหม?,neutral,medium,2.3,medium
+audio/emotion0001.wav,ว้าว! นี่มันน่าทึ่งมากเลย!,positive,high,2.5,high
+audio/emotion0002.wav,โอ๊ย! เจ็บจังเลย!,negative,high,1.8,high
+audio/emotion0003.wav,เธอทำแบบนี้ทำไม!? มันไม่แฟร์เลยนะ,negative,high,3.0,high
+audio/emotion0004.wav,ฉันดีใจมาก ๆ ที่ได้เจอเธออีกครั้ง!,positive,high,2.8,high
+audio/emotion0005.wav,ไม่จริงน่า... ฉันไม่อยากจะเชื่อเลย!,negative,high,2.7,high
+audio/love0001.wav,ฉันคิดถึงเธอจัง,positive,low,2.2,low
+audio/love0002.wav,เธอรู้ไหม ว่าเธอสำคัญกับฉันแค่ไหน?,positive,low,3.0,medium
+audio/love0003.wav,ขอบคุณที่อยู่ข้าง ๆ ฉันเสมอ,positive,warm,2.8,medium
+audio/love0004.wav,อยากให้เธออยู่ตรงนี้ด้วยกัน,positive,low,2.5,low
+audio/love0005.wav,รักเธอนะ ไม่ว่ายังไงก็ตาม,positive,low,2.3,low
+audio/command0001.wav,เปิดไฟหน่อยสิ,neutral,medium,1.8,medium
+audio/command0002.wav,ช่วยหยิบหนังสือให้ฉันหน่อย,neutral,medium,2.2,medium
+audio/command0003.wav,ตั้งปลุกตอนหกโมงเช้า,neutral,medium,2.0,medium
+audio/command0004.wav,เงียบหน่อย ฉันกำลังโฟกัส,neutral,low,2.3,medium
+audio/command0005.wav,บอกฉันหน่อยว่าวันนี้มีประชุมกี่โมง,neutral,medium,2.8,medium
